@@ -1,7 +1,0 @@
-<Shell xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt" x:Class="tabelas.bancoDeDados.Teste" text="XWT Forms Application">
-	<Shell.layout>
-		<RowLayout/>
-	</Shell.layout>
-	<Button text="Double click me!"/>
-</Shell>
-<!-- Forms API -->
