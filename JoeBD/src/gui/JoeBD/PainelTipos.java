@@ -203,7 +203,7 @@ public class PainelTipos extends JFrame {
 	}
 
 	public void salvarTable(JTable table, String nomeArquivo) throws Exception {
-		FileWriter fw = new FileWriter("tabelas/" + nomeArquivo + ".joett");
+		FileWriter fw = new FileWriter("tipos/" + nomeArquivo + ".joett");
 		BufferedWriter bfw = new BufferedWriter(fw);
 		for (int i = 0; i < table.getColumnCount(); i++) {
 			//bfw.write(table.getColumnName(i));
@@ -218,7 +218,8 @@ public class PainelTipos extends JFrame {
 		}
 		bfw.close();
 		fw.close();
-
+		fw = new FileWriter("tabelas/" + nomeArquivo + ".joetb");
+		fw.close();
 	}
 
 	
