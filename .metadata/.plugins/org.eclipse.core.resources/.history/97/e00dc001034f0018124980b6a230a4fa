@@ -1,0 +1,24 @@
+package tabelas.bancoDeDados;
+
+public class JoeTabbleType {
+	
+	/**
+	 * 
+	 * Tipos aceitos :
+	 * INT (6 dígitos), FLOAT (6
+dígitos antes da vírgula e 6 dígitos depois), DATE (YYYY-MM-DD),
+DATETIME (YYYY-MM-DD HH:MM:SS), CHAR (tamanho variável, mas
+ocupando sempre todas as posições), VARCHAR (tamanho variável), TEXT
+(tamanho dinâmico)
+	 * 
+	 * INT - 6 dg.
+	 * FLOAT - 6digitos,6digitos
+	 * DATE - (YYYY-MM-DD)
+	 * DATETIME - (YYYY-MM-DD HH:MM:SS)
+	 * CHAR - (váriavel / FULL SPACE)
+	 * 
+	 */
+	
+	
+	
+}

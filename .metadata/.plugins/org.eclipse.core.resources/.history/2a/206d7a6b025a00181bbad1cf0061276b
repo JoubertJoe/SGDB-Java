@@ -1,0 +1,4 @@
+
+id	INT	5	true	null	true	null	null	null	
+tentatia	CHAR	2	null	null	null	true	IA	null	
+custo	FLOAT	null	null	null	null	null	null	null	

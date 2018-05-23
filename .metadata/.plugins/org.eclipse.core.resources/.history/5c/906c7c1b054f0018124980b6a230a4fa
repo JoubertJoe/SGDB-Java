@@ -1,0 +1,38 @@
+package tabelas.bancoDeDados;
+
+public class JoeTabbleType {
+
+	/**
+	 * 
+	 * INT - 6 dg.
+	 * 
+	 * FLOAT - 6digitos,6digitos
+	 * 
+	 * DATE - (YYYY-MM-DD)
+	 * 
+	 * DATETIME - (YYYY-MM-DD HH:MM:SS)
+	 * 
+	 * CHAR - (variável / FULL SPACE)
+	 * 
+	 * VARCHAR (variável)
+	 * 
+	 * TEXT - variável
+	 */
+
+	
+	public String instaceInt(String variavel,int tamanho, int inteiro) {
+		String novoInt = inteiro+"";
+		if(novoInt.length() < tamanho) {
+			for (int i = novoInt.length(); i < array.length; i++) {
+				
+			}
+		}
+		
+		String novoInt = "["+variavel+"]"+"["+tamanho+"]"+":"+inteiro;
+			
+		
+		return "";
+	}
+	
+	
+}

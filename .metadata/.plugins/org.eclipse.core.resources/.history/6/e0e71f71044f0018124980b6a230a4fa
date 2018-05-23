@@ -1,0 +1,29 @@
+package tabelas.bancoDeDados;
+
+public class JoeTabbleType {
+
+	/**
+	 * 
+	 * INT - 6 dg.
+	 * 
+	 * FLOAT - 6digitos,6digitos
+	 * 
+	 * DATE - (YYYY-MM-DD)
+	 * 
+	 * DATETIME - (YYYY-MM-DD HH:MM:SS)
+	 * 
+	 * CHAR - (variável / FULL SPACE)
+	 * 
+	 * VARCHAR (variável)
+	 * 
+	 * TEXT - variável
+	 */
+
+	
+	public int instaceInt(int tamanho) {
+		int novoint;
+		return novoint;
+	}
+	
+	
+}

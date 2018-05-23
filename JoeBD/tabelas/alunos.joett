@@ -1,0 +1,6 @@
+id	INT	6	true	true	true	null	null	null	
+nome	VARCHAR	null	null	null	null	null	null	null	
+cpf	CHAR	11	null	true	null	null	null	null	
+telefone	CHAR	14	null	null	null	true	null	null	
+nascimento	DATE	null	null	null	null	null	null	null	
+matricula	CHAR	12	null	true	null	null	null	null	

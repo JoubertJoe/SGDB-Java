@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;gui.JoeBD.PainelTabela.visualizaTabela().coluna&apos; in &apos;gui.JoeBD.PainelTabela.visualizaTabela()&apos; to field&#x0A;- Original project: &apos;JoeBD&apos;&#x0A;- Original element: &apos;gui.JoeBD.PainelTabela.visualizaTabela().coluna&apos;&#x0A;- Field name: &apos;colunas&apos;&#x0A;- Initialize field in method&#x0A;- Declared visibility: &apos;private&apos;" description="Convert local variable &apos;coluna&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;gui.JoeBD{PainelTabela.java" name="colunas" selection="8090 13" stamp="1526498527413" static="false" version="1.0" visibility="2"/>
+</session>
