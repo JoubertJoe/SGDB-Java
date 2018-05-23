@@ -1773,6 +1773,7 @@ IEclipsePreferences#org-eclipse-jdt-ui {
 		'semanticHighlighting.staticMethodInvocation.italic=false'
 		'semanticHighlighting.staticMethodInvocation.strikethrough=false'
 		'semanticHighlighting.staticMethodInvocation.underline=false'
+		'semanticHighlighting.varKeyword.color=204,120,50'
 		'sourceHoverBackgroundColor=161,152,121'
 }
 IEclipsePreferences#org-eclipse-jst-jsp-ui {

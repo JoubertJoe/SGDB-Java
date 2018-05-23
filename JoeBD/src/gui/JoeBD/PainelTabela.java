@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,6 +36,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
+import javax.swing.ScrollPaneConstants;
 
 public class PainelTabela extends JFrame {
 
@@ -175,6 +177,7 @@ public class PainelTabela extends JFrame {
 		pnlVSL.add(scrollTabelaVisao, BorderLayout.CENTER);
 
 		tabelaVisao = new JTable();
+		tabelaVisao.setFillsViewportHeight(true);
 		scrollTabelaVisao.setViewportView(tabelaVisao);
 
 	}
@@ -258,9 +261,10 @@ public class PainelTabela extends JFrame {
 	public void visualizaTabela(String tabela) {
 		ArrayList<String[]> listaElementos;
 		ArrayList<String> coluna = new ArrayList<String>();
+		ArrayList<String> linha = new ArrayList<String>();
 
 		try {
-			listaElementos = importaArquivo(tabela);
+			listaElementos = importaArquivo(tabela.replace("tabelas", "tipos").replace(".joetb", ".joett"));
 
 			for (int i = 0; i < listaElementos.size(); i++) {
 				// System.out.println("coluna 01 " + listaElementos.get(i)[0]);
@@ -272,11 +276,26 @@ public class PainelTabela extends JFrame {
 
 			coluna.toArray(colunas);
 			modeloBD = new DefaultTableModel(colunas, 0);
+			try {
+				listaElementos = importaArquivo(tabela);
+
+				for (int i = 0; i < listaElementos.size(); i++) {
+					 System.out.println("linha 01 " + listaElementos.get(i)[0]);
+					String[] arrayLinha =  listaElementos.get(i)[0].split(",");
+				modeloBD.addRow(arrayLinha);
+
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 	}
 
 	public String[] separaAtributos(String linhatb) {
@@ -302,6 +321,10 @@ public class PainelTabela extends JFrame {
 
 	}
 
+
+
+	
+	
 	private void criaAcoes() {
 
 		btnSelecionar.addActionListener(new ActionListener() {
