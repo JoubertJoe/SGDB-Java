@@ -30,6 +30,10 @@ import javax.swing.tree.TreeModel;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rtextarea.RTextScrollPane;
+
+import util.JoeBd.Parser;
+
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.MatteBorder;
@@ -73,6 +77,7 @@ public class PainelTabela extends JFrame {
 		setForeground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 664, 300);
+		Parser parserTipos = new Parser();
 
 		criaJanela();
 		criaAcoes();
@@ -270,7 +275,7 @@ public class PainelTabela extends JFrame {
 				// System.out.println("coluna 01 " + listaElementos.get(i)[0]);
 				coluna.add(listaElementos.get(i)[0]);
 
-			}
+			} // for
 			String[] colunas = new String[coluna.size()];
 			boolean trueOrFalse;
 
@@ -280,22 +285,21 @@ public class PainelTabela extends JFrame {
 				listaElementos = importaArquivo(tabela);
 
 				for (int i = 0; i < listaElementos.size(); i++) {
-					 System.out.println("linha 01 " + listaElementos.get(i)[0]);
-					String[] arrayLinha =  listaElementos.get(i)[0].split(",");
-				modeloBD.addRow(arrayLinha);
+					System.out.println("linha 01 " + listaElementos.get(i)[0]);
+					String[] arrayLinha = listaElementos.get(i)[0].split(",");
+					modeloBD.addRow(arrayLinha);
 
-				}
+				} // for
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			} // 2trycatch
 
-			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		} // 1trycatch
+
 	}
 
 	public String[] separaAtributos(String linhatb) {
@@ -316,15 +320,15 @@ public class PainelTabela extends JFrame {
 			// System.out.println("coluna " + 0 + ": " + coluna[0].toString());
 
 			listaVariaveis.add(coluna);
-		}
+		} // while
 		return listaVariaveis;
 
 	}
 
+	public void verificaInsertTabela(String novoInsert) throws IOException {
 
+	}
 
-	
-	
 	private void criaAcoes() {
 
 		btnSelecionar.addActionListener(new ActionListener() {
@@ -348,9 +352,9 @@ public class PainelTabela extends JFrame {
 						System.out.println(insert[0] + "\n" + insert[1]);
 					} catch (Exception syntaxError) {
 						JOptionPane.showMessageDialog(txtCodigo, "Erro de Syntaxe:\n" + syntaxError);
-					}
+					} // catch
 
-				}
+				} // if
 
 				if (comandos.contains("select")) {
 					try {
@@ -359,9 +363,9 @@ public class PainelTabela extends JFrame {
 						wheres = filtraWhere(comandos);
 					} catch (Exception syntaxError) {
 						JOptionPane.showMessageDialog(txtCodigo, "Erro de Syntaxe:\n" + syntaxError);
-					}
-				}
-			}
-		});
+					} // tryCatch
+				} // if
+			}// metodo
+		});// listener
 	}
 }

@@ -12,12 +12,29 @@
 	<atom:link href="https://www.genuitec.com/feed/" rel="self" type="application/rss+xml" />
 	<link>https://www.genuitec.com</link>
 	<description>The Cloud Control Company</description>
-	<lastBuildDate>Wed, 23 May 2018 17:18:02 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 24 May 2018 21:50:56 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.2</generator>
 	<item>
+		<title>React Tutorial: Create and Debug an App in Eclipse with CodeMix</title>
+		<link>https://www.genuitec.com/react-tutorial-getting-started/</link>
+		<pubDate>Thu, 24 May 2018 15:14:43 +0000</pubDate>
+		<dc:creator><![CDATA[eligiom]]></dc:creator>
+				<category><![CDATA[Eclipse]]></category>
+		<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[MyEclipse]]></category>
+		<category><![CDATA[Programming Tips]]></category>
+		<category><![CDATA[Webclipse]]></category>
+		<category><![CDATA[React in Eclipse]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=588128</guid>
+		<description><![CDATA[<p>Making React run properly in Eclipse can be a really big headache…or an amazingly cool experience with CodeMix! CodeMix integrates the best of the VS Code world into Eclipse, such as support to create and debug React applications. Follow this React tutorial to quickly create and debug an app in Eclipse with CodeMix:Create Your App Make [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/react-tutorial-getting-started/">React Tutorial: Create and Debug an App in Eclipse with CodeMix</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		</item>
+		<item>
 		<title>PHP Development in Eclipse Has Never been Easier!</title>
 		<link>https://www.genuitec.com/php-development-in-eclipse-has-never-been-easier/</link>
 		<pubDate>Thu, 17 May 2018 15:18:14 +0000</pubDate>
@@ -284,25 +301,6 @@
 <p>The post <a rel="nofollow" href="https://www.genuitec.com/myeclipse-2017-stable-2-0-is-ready/">MyEclipse 2017 Stable 2.0 is Ready for Your Holiday Table!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
 ]]></description>
 		</item>
-		<item>
-		<title>2017 CI 10 &#8211; Our Holiday Gift is Here</title>
-		<link>https://www.genuitec.com/2017-ci-10-holiday-gift/</link>
-		<pubDate>Fri, 22 Dec 2017 13:18:37 +0000</pubDate>
-		<dc:creator><![CDATA[Wanda Muriy]]></dc:creator>
-				<category><![CDATA[Eclipse]]></category>
-		<category><![CDATA[Genuitec]]></category>
-		<category><![CDATA[MyEclipse]]></category>
-		<category><![CDATA[Programming Tips]]></category>
-		<category><![CDATA[Webclipse]]></category>
-		<category><![CDATA[2017 CI 10 release]]></category>
-		<category><![CDATA[new release]]></category>
-		<category><![CDATA[software updates]]></category>
-
-		<guid isPermaLink="false">https://www.genuitec.com/?p=545604</guid>
-		<description><![CDATA[<p>We are getting more and more in the holiday mood! Need proof? Our 2017 CI 10 is out the door, bringing you the best present right before the holidays &#8211; a release focused on critical fixes across our products. And if you happened to experience a critical crash on macOS High Sierra, it won’t happen [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.genuitec.com/2017-ci-10-holiday-gift/">2017 CI 10 &#8211; Our Holiday Gift is Here</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
-]]></description>
-		</item>
 	</channel>
 </rss>
 
@@ -311,7 +309,7 @@ Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/pro
 
 Page Caching using disk: enhanced (SSL caching disabled) 
 Content Delivery Network via resources.cloud.genuitec.com
-Database Caching 95/153 queries in 1.488 seconds using disk
+Database Caching 98/154 queries in 1.351 seconds using disk
 
-Served from: www.genuitec.com @ 2018-05-23 13:33:14 by W3 Total Cache
+Served from: www.genuitec.com @ 2018-05-24 17:29:29 by W3 Total Cache
 -->
