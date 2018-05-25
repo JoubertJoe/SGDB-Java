@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="insere" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="arquiv"/>
-			<item value="mergedRecords"/>
-			<item value="read"/>
-			<item value="tabela"/>
-			<item value="joe"/>
-			<item value="model"/>
-			<item value="syso"/>
-			<item value="modelo"/>
+			<item value="INSERT"/>
+			<item value="insere"/>
+			<item value="insert"/>
+			<item value="novoTexo"/>
+			<item value="novotexto"/>
+			<item value="novotex"/>
+			<item value="Insert"/>
+			<item value="dados"/>
 		</list>
 		<list key="replacehistory">
 			<item value="linha"/>
