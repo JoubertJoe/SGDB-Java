@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Parser {
+public class ParserTabela {
 
 	public void abrirArquivo(String nomeArquivo) throws IOException {
 		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(nomeArquivo)));
@@ -17,5 +17,14 @@ public class Parser {
 		while ((linha = leitor.readLine()) != null) {
 			System.out.println(linha);
 		}
+	}
+
+	public boolean validaInsert(String insert, String tabela) throws IOException {
+		abrirArquivo(tabela);
+		return true;
+	}
+	
+	public void insere() {
+		
 	}
 }

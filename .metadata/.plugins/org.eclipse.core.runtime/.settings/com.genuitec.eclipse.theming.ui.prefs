@@ -1,11 +1,12 @@
-applyBackground=false
+applyBackground=true
 approved.defs.file.last.changed.time=1523293951000
 codemix.dont.show.upsell.until=1526754976879
 configurationInstallLocation=/home/joubertjoe/eclipse/java-oxygen/eclipse/
 eclipse.preferences.version=1
 iconcolormode=primary
-last.download.attempt.time=1527100087215
-lastConfiguration=1527200634829
+includeThemingInOomph=false
+last.download.attempt.time=1527277460007
+lastConfiguration=1527282252327
 newinstall=false
 showWelcomeDialog=false
 workbench.theme=Dark Gray

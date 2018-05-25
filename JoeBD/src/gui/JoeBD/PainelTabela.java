@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -31,8 +32,8 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rtextarea.RTextScrollPane;
 
-import util.JoeBd.Parser;
-
+import util.JoeBd.InsereArquivo;
+import util.JoeBd.ParserTabela;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -72,12 +73,14 @@ public class PainelTabela extends JFrame {
 		});
 	}
 
+	ParserTabela parserTipos = new ParserTabela();
+	InsereArquivo insere = new InsereArquivo();
+
 	public PainelTabela() {
 		setTitle("JOEBD");
 		setForeground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 664, 300);
-		Parser parserTipos = new Parser();
 
 		criaJanela();
 		criaAcoes();
@@ -151,7 +154,7 @@ public class PainelTabela extends JFrame {
 		txtCodigo = new RSyntaxTextArea();
 		txtCodigo.setCurrentLineHighlightColor(UIManager.getColor("TabbedPane.light"));
 		txtCodigo.setBackground(UIManager.getColor("TabbedPane.shadow"));
-		txtCodigo.setText("INSERT INTO `Biblioteca`.`autores`\n(Nome,DDN)\nVALUES\n(\"J.K. Rolling\", \"707070\")\n");
+		txtCodigo.setText("INSERT INTO `alunos`\n(Nome,cpf,telefone,nascimento,matricula)\nVALUES\n(\"Giulia Marla de Lima Costa\", \"707070\")\n");
 		txtCodigo.setMarginLineEnabled(true);
 		txtCodigo.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SQL);
 		txtCodigo.setAutoIndentEnabled(true);
@@ -189,14 +192,19 @@ public class PainelTabela extends JFrame {
 
 	private String[] filtraInsert(String texto) throws Exception {
 		String[] novoTexto;
+
 		// Passando tudo pra caixa baixa, removendo todos os espaços em branco, e
 		// filtrando o Select
 		novoTexto = texto.toLowerCase(getLocale()).replaceAll("\\s+", "").split("insertinto");
+
 		novoTexto = novoTexto[1].split("values"); // Isolando o Select
-		novoTexto = novoTexto[0].split("where");
+		String dados = novoTexto[1].toLowerCase().toString().replaceAll("\n", null);
+
 		novoTexto = novoTexto[0].replaceAll("`", "").split("\\(");
-		novoTexto[1] = novoTexto[1].replaceAll(",", "\t").replaceAll("\\)", "\n");
-		return novoTexto;
+		novoTexto[1] = novoTexto[1].replaceAll(",", "\t").replaceAll("\\)", "");
+
+		String[] aux = new String[] { novoTexto[0], novoTexto[1], dados };
+		return aux;
 	}
 
 	private String[] filtraSelect(String texto) throws Exception {
@@ -349,7 +357,11 @@ public class PainelTabela extends JFrame {
 				if (comandos.contains("insert")) {
 					try {
 						String insert[] = filtraInsert(comandos);
-						System.out.println(insert[0] + "\n" + insert[1]);
+						for (int i = 0; i < insert.length; i++) {
+							System.out.println(i + ":" + insert[i]);
+						}
+						insere.InsereInsert(insert[2], "tabelas/" + insert[0] + ".joetb");
+
 					} catch (Exception syntaxError) {
 						JOptionPane.showMessageDialog(txtCodigo, "Erro de Syntaxe:\n" + syntaxError);
 					} // catch
