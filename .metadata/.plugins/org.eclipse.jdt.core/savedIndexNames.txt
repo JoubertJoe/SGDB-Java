@@ -7,7 +7,6 @@ INDEX VERSION 1.130+/home/joubertjoe/Documentos/BancoDeDados/.metadata/.plugins/
 2982035129.index
 46282419.index
 2771403403.index
-3420196920.index
 1932949083.index
 3885805113.index
 2841451250.index
