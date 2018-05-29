@@ -30,10 +30,10 @@ public class InsereArquivo {
 	public Boolean InsereInsert(String insert, String tabela) throws IOException {
 		if (!parser.validaInsert(insert, tabela)) {
 			return false;
-		}else {
-			EscreveNoArquivo(insert, tabela);
+		} else {
+			EscreveNoArquivo(insert.replace("(", "").replaceAll("\\)", ""), tabela);
 			return true;
 		}
-			
+
 	}
 }// Classe

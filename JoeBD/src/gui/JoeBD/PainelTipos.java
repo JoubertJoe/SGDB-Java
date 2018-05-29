@@ -208,22 +208,24 @@ public class PainelTipos extends JFrame {
 		for (int i = 0; i < table.getColumnCount(); i++) {
 			//bfw.write(table.getColumnName(i));
 			//bfw.write("\t");
-		}
+		}//for i 
+		
+		//Problema coluna 2 e 7 não retornam nada caso estejam em branco
 		for (int i = 0; i < table.getRowCount(); i++) {
-			//bfw.newLine();
+			bfw.newLine();
 			for (int j = 0; j < table.getColumnCount(); j++) {
 				bfw.write(table.getValueAt(i, j) + "");
+				if(table.getValueAt(i, j).toString() == null) {
+					bfw.write("null");
+				}//null
 				bfw.write("\t");
-			}
-		}
+			}//for j
+		}//for i
 		bfw.close();
 		fw.close();
 		fw = new FileWriter("tabelas/" + nomeArquivo + ".joetb");
 		fw.close();
-	}
-
-	
-	
+	}//salvarTable
 
 	public void verificaTamanhoElemento(JTable table) {
 
