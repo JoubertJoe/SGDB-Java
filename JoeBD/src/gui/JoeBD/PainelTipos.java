@@ -210,12 +210,12 @@ public class PainelTipos extends JFrame {
 			//bfw.write("\t");
 		}//for i 
 		
-		//Problema coluna 2 e 7 não retornam nada caso estejam em branco
+		
 		for (int i = 0; i < table.getRowCount(); i++) {
 			bfw.newLine();
 			for (int j = 0; j < table.getColumnCount(); j++) {
 				bfw.write(table.getValueAt(i, j) + "");
-				if(table.getValueAt(i, j).toString() == null) {
+				if((table.getValueAt(i, j)+"").length() == 0) {
 					bfw.write("null");
 				}//null
 				bfw.write("\t");
