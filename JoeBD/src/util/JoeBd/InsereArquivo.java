@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class InsereArquivo {
 	ParserTabela parser = new ParserTabela();
@@ -28,10 +29,20 @@ public class InsereArquivo {
 	}// Metodo
 
 	public Boolean InsereInsert(String insert, String tabela) throws IOException {
-		if (!parser.validaInsert(insert, tabela)) {
+		insert = insert.substring(1,insert.length()-1);
+		if (!parser.validaInsert(insert, tabela.replace(".joetb", ".joett").replace("tabelas/", "tipos/"))) {
 			return false;
 		} else {
-			EscreveNoArquivo(insert.replace("(", "").replaceAll("\\)", ""), tabela);
+			//EscreveNoArquivo(insert, tabela);
+			String aux[] = insert.split("[,]");
+			System.out.println(insert);
+			System.out.println(aux[0]);
+			ArrayList<String> listaInsert = new ArrayList<>();
+			for (int i = 0; i < aux.length; i++) {
+				listaInsert.add(aux[i]);
+			}
+
+			parser.confereLinha(tabela, listaInsert);
 			return true;
 		}
 

@@ -154,7 +154,8 @@ public class PainelTabela extends JFrame {
 		txtCodigo = new RSyntaxTextArea();
 		txtCodigo.setCurrentLineHighlightColor(UIManager.getColor("TabbedPane.light"));
 		txtCodigo.setBackground(UIManager.getColor("TabbedPane.shadow"));
-		txtCodigo.setText("INSERT INTO `alunos`\n(Nome,cpf,telefone,nascimento,matricula)\nVALUES\n(\"Giulia Marla de Lima Costa\", \"707070\")\n");
+		txtCodigo.setText(
+				"INSERT INTO `alunos`\n(Nome,cpf,telefone,nascimento,matricula)\nVALUES\n(\"Giulia Marla de Lima Costa\", \"707070\")\n");
 		txtCodigo.setMarginLineEnabled(true);
 		txtCodigo.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SQL);
 		txtCodigo.setAutoIndentEnabled(true);
@@ -360,7 +361,7 @@ public class PainelTabela extends JFrame {
 						for (int i = 0; i < insert.length; i++) {
 							System.out.println(i + ":" + insert[i]);
 						}
-						insere.InsereInsert(insert[2], "tabelas/" + insert[0] + ".joetb");
+						insere.InsereInsert(insert[2], "tipos/" + insert[0] + ".joett");
 
 					} catch (Exception syntaxError) {
 						JOptionPane.showMessageDialog(txtCodigo, "Erro de Syntaxe:\n" + syntaxError);
@@ -373,6 +374,7 @@ public class PainelTabela extends JFrame {
 						selects = filtraSelect(comandos);
 						froms = filtraFrom(comandos);
 						wheres = filtraWhere(comandos);
+
 					} catch (Exception syntaxError) {
 						JOptionPane.showMessageDialog(txtCodigo, "Erro de Syntaxe:\n" + syntaxError);
 					} // tryCatch
