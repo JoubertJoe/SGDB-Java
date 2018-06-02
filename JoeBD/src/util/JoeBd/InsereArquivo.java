@@ -1,4 +1,4 @@
-package util.JoeBd;
+	package util.JoeBd;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,21 +28,28 @@ public class InsereArquivo {
 		} // Finally
 	}// Metodo
 
-	public Boolean InsereInsert(String insert, String tabela) throws IOException {
-		insert = insert.substring(1,insert.length()-1);
+	public Boolean InsereInsert(String insert, String tabela, String variaveis) throws IOException {
+		insert = insert.substring(1, insert.length() - 1);
 		if (!parser.validaInsert(insert, tabela.replace(".joetb", ".joett").replace("tabelas/", "tipos/"))) {
 			return false;
 		} else {
-			//EscreveNoArquivo(insert, tabela);
+			// EscreveNoArquivo(insert, tabela);
 			String aux[] = insert.split("[,]");
+			String aux2[] = variaveis.split("[\t]");
 			System.out.println(insert);
 			System.out.println(aux[0]);
 			ArrayList<String> listaInsert = new ArrayList<>();
+			ArrayList<String> listaVar = new ArrayList<>();
+
 			for (int i = 0; i < aux.length; i++) {
 				listaInsert.add(aux[i]);
 			}
-
-			parser.confereLinha(tabela, listaInsert);
+			for (int i = 0; i < aux2.length; i++) {
+				listaVar.add(aux2[i].replaceAll("\\s+", ""));
+			}
+			System.out.println(listaInsert.toString());
+			System.out.println(listaVar.toString());
+			parser.confereLinha(tabela, listaInsert, listaVar);
 			return true;
 		}
 

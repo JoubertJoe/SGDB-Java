@@ -361,7 +361,7 @@ public class PainelTabela extends JFrame {
 						for (int i = 0; i < insert.length; i++) {
 							System.out.println(i + ":" + insert[i]);
 						}
-						insere.InsereInsert(insert[2], "tipos/" + insert[0] + ".joett");
+						insere.InsereInsert(insert[2], "tipos/" + insert[0] + ".joett", insert[1]);
 
 					} catch (Exception syntaxError) {
 						JOptionPane.showMessageDialog(txtCodigo, "Erro de Syntaxe:\n" + syntaxError);

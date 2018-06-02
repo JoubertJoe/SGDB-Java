@@ -6821,3 +6821,47 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1472)
+!SESSION 2018-06-02 17:55:18.536 -----------------------------------------------
+eclipse.buildId=4.7.3.M20180330-0640
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-06-02 18:16:01.725
+!MESSAGE No repository found at http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.7.3a-201803300640/swt-4.7.3a-win32-win32-x86.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-06-02 18:16:11.909
+!MESSAGE No repository found at http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.7.3a-201803300640/swt-4.7.3a-win32-win32-x86.ziptype%20or%20select%20a%20site.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-06-02 18:16:21.026
+!MESSAGE No repository found at http://download.eclipse.org/swt/updates/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-06-02 18:16:28.365
+!MESSAGE No repository found at https://www.eclipse.org/swt/.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2018-06-02 18:16:30.989
+!MESSAGE Server returned lastModified <= 0 for https://raw.github.com/satyagraha/gfm_viewer/master/p2-composite/compositeContent.xml
+!SESSION 2018-06-02 18:34:47.470 -----------------------------------------------
+eclipse.buildId=4.7.3.M20180330-0640
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-06-02 19:35:00.405
+!MESSAGE No repository found at http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.7.3a-201803300640/swt-4.7.3a-win32-win32-x86.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-06-02 19:35:09.346
+!MESSAGE No repository found at http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.7.3a-201803300640/swt-4.7.3a-win32-win32-x86.ziptype%20or%20select%20a%20site.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-06-02 19:35:17.609
+!MESSAGE No repository found at http://download.eclipse.org/swt/updates/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-06-02 19:35:24.642
+!MESSAGE No repository found at https://www.eclipse.org/swt/.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2018-06-02 19:35:26.162
+!MESSAGE Server returned lastModified <= 0 for https://raw.github.com/satyagraha/gfm_viewer/master/p2-composite/compositeContent.xml

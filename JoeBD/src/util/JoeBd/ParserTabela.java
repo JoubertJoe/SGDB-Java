@@ -21,24 +21,39 @@ public class ParserTabela {
 
 	}
 
-	public void confereLinha(String arquivo, ArrayList<String> listaInsert) throws IOException {
+	public void confereLinha(String arquivo, ArrayList<String> listaInsert, ArrayList<String> listaVar)
+			throws IOException {
+
 		ArrayList<String> linhas = abrirArquivo(arquivo);
+		ArrayList<String> linhaTabela = abrirArquivo(arquivo.replace("tipos/", "tabelas/").replace(".joett", ".joetb"));
+		String ultimoInsert[] = linhaTabela.get(linhaTabela.size() - 1).split(",");
+		StringBuilder insert = new StringBuilder();
 
-		for (int i = 0; i < linhas.size(); i++) {
-			// System.out.println(linhas.get(i).toString());
-			System.out.println("\n---------------------------------------------\n");
-			String[] linha = linhas.get(i).split("\t");
-			System.out.println("Variável: " + nome(linha));
-			System.out.println("Tipo: " + tipo(linha));
-			System.out.println("Tamanho: " + tamanho(linha));
-			System.out.println("Primary Key: " + primaryKey(linha));
-			System.out.println("Unique: " + unique(linha));
-			System.out.println("Auto Increment: " + autoIncrement(linha));
-			System.out.println("Null: " + canBeNull(linha));
-			System.out.println("Default Value: " + defaultValue(linha));
-			System.out.println("Signed: " + signed(linha));
+		for (int j = 0; j <= linhas.size(); j++) { // j é a linha
+			// System.out.println(linhas.get(j));
+			String[] linha = linhas.get(j).split("\t");
 
-		} // for
+			if (autoIncrement(linha) == true) {
+				int aInc = Integer.parseInt(ultimoInsert[j]);
+				String aIncS = aInc + "";
+				for (int i = 0; i < (6 - aIncS.length()); i++) {
+					insert.append("0");
+				}
+				insert.append(aIncS);
+				System.out.println("INSERT " + insert.toString());
+
+			} // if AutoIncrement
+			for (int i = 0; i < listaVar.size() - 1; i++) { // i é a variavel a ser inserida
+				System.out.println(listaVar.get(i));
+
+				if (nome(linha).equalsIgnoreCase(listaVar.get(i).toString())) {
+					System.out.println(nome(linha));
+
+				} // Se a variável bater com a linha;
+
+			} // FOR J
+		} // FOR I
+
 	}
 
 	public boolean validaInsert(String insert, String tabela) throws IOException {
@@ -77,7 +92,7 @@ public class ParserTabela {
 	}
 
 	public boolean primaryKey(String[] parametros) {
-		if (parametros[3].replaceAll("\\s+", "") == "null") {
+		if (parametros[3].replaceAll("\\s+", "").equalsIgnoreCase("null")) {
 			return false;
 		} else {
 			return true;
@@ -87,7 +102,7 @@ public class ParserTabela {
 
 	public boolean unique(String[] parametros) {
 
-		if (parametros[4].replaceAll("\\s+", "") == "null") {
+		if (parametros[4].replaceAll("\\s+", "").equalsIgnoreCase("null")) {
 			return false;
 		} else {
 			return true;
@@ -95,7 +110,7 @@ public class ParserTabela {
 	}
 
 	public boolean autoIncrement(String[] parametros) {
-		if (parametros[5].replaceAll("\\s+", "") == "null") {
+		if (parametros[5].replaceAll("\\s+", "").equalsIgnoreCase("null")) {
 			return false;
 		} else {
 			return true;
@@ -103,7 +118,7 @@ public class ParserTabela {
 	}
 
 	public boolean canBeNull(String[] parametros) {
-		if (parametros[6].replaceAll("\\s+", "") == "null") {
+		if (parametros[6].replaceAll("\\s+", "").equalsIgnoreCase("null")) {
 			return false;
 		} else {
 			return true;
