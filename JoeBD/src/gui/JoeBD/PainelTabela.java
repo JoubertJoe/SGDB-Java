@@ -34,6 +34,7 @@ import org.fife.ui.rtextarea.RTextScrollPane;
 
 import util.JoeBd.InsereArquivo;
 import util.JoeBd.ParserTabela;
+import util.JoeBd.SelectTexto;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -55,7 +56,7 @@ public class PainelTabela extends JFrame {
 	private String[] selects, froms, wheres;
 	private JPanel pnlTreeBtns;
 	private JButton btnSelecionar, btnVoltar;
-	private DefaultTableModel modeloBD;
+	private DefaultTableModel modeloBD, modeloPesquisa;
 	private JTable tabelaVisao;
 	private JScrollPane scrollTabelaVisao;
 	private Object[] colunas;
@@ -75,6 +76,7 @@ public class PainelTabela extends JFrame {
 
 	ParserTabela parserTipos = new ParserTabela();
 	InsereArquivo insere = new InsereArquivo();
+	SelectTexto selectText = new SelectTexto();
 
 	public PainelTabela() {
 		setTitle("JOEBD");
@@ -313,6 +315,48 @@ public class PainelTabela extends JFrame {
 
 	}
 
+	public void visualizaTabela(String tabela, ArrayList<String> dados) {
+
+		ArrayList<String[]> listaElementos;
+		ArrayList<String> listaElementos2;
+		ArrayList<String> coluna = new ArrayList<String>();
+		ArrayList<String> linha = new ArrayList<String>();
+
+		try {
+			listaElementos = importaArquivo(tabela.replace("tabelas", "tipos").replace(".joetb", ".joett"));
+
+			for (int i = 0; i < listaElementos.size(); i++) {
+				// System.out.println("coluna 01 " + listaElementos.get(i)[0]);
+				coluna.add(listaElementos.get(i)[0]);
+
+			} // for
+			String[] colunas = new String[coluna.size()];
+			
+
+			coluna.toArray(colunas);
+			
+			modeloPesquisa = new DefaultTableModel(colunas, 0);
+			System.out.println(dados.toString());
+			listaElementos2 = dados;
+			System.out.println(listaElementos2.size());
+
+			for (int i = 0; i < listaElementos2.size(); i++) {
+				
+				System.out.println("linha 01 " + dados.get(i).toString());
+				String[] arrayLinha = listaElementos2.get(i).split(",");
+				modeloPesquisa.addRow(arrayLinha);
+
+			} // for
+
+			tbResultados.setModel(modeloPesquisa);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // 1trycatch
+
+	}
+
 	public String[] separaAtributos(String linhatb) {
 		// NOME TIPO TAMANHO PK UNIQUE AI Null Default Value SIGNED
 		String[] atributos = linhatb.split("\t");
@@ -378,6 +422,9 @@ public class PainelTabela extends JFrame {
 						selects = filtraSelect(comandos);
 						froms = filtraFrom(comandos);
 						wheres = filtraWhere(comandos);
+						// tbResultados
+						ArrayList<String> dado = selectText.selectTabela("tabelas/" + froms[0] + ".joetb", wheres[0]);
+						visualizaTabela("tipos/" + froms[0] + ".joett",dado);
 
 					} catch (Exception syntaxError) {
 						JOptionPane.showMessageDialog(txtCodigo, "Erro de Syntaxe:\n" + syntaxError);
@@ -385,7 +432,7 @@ public class PainelTabela extends JFrame {
 				} // if
 			}// metodo
 		});// listener
-		
+
 		btnVoltar.setEnabled(false);
 	}
 }
