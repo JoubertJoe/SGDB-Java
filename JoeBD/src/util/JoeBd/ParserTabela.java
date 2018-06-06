@@ -32,17 +32,19 @@ public class ParserTabela {
 
 		ArrayList<String> linhas = abrirArquivo(arquivo);
 		ArrayList<String> linhaTabela = abrirArquivo(arquivo.replace("tipos/", "tabelas/").replace(".joett", ".joetb"));
-		String ultimoInsert[] = {"0"};
-		if(linhaTabela.size() > 0) {
-			ultimoInsert = linhaTabela.get(linhaTabela.size() - 1).split(",");			
+		String ultimoInsert[] = { "0" };
+		if (linhaTabela.size() > 0) {
+			ultimoInsert = linhaTabela.get(linhaTabela.size() - 1).split(",");
 		}
-		
+
 		StringBuilder insert = new StringBuilder();
 
 		for (int j = 0; j <= linhas.size() - 1; j++) { // j é a linha
-			// System.out.println(linhas.get(j));
+
 			String[] linha = linhas.get(j).split("\t");
+
 			if (autoIncrement(linha) == true) {
+
 				int aInc = Integer.parseInt(ultimoInsert[j]) + 1;
 				String aIncS = aInc + "";
 				for (int t = 0; t < (6 - aIncS.length()); t++) {
@@ -54,6 +56,7 @@ public class ParserTabela {
 			else {
 
 				for (int i = 0; i < listaVar.size(); i++) { // i é a variavel a ser inserida
+
 					if (nome(linha).equalsIgnoreCase(listaVar.get(i).toString())) {
 
 						if (tipo(linha).equalsIgnoreCase("date")) {
@@ -84,22 +87,26 @@ public class ParserTabela {
 						} // Se o tipo for Inteiro
 
 						else if (tipo(linha).equalsIgnoreCase("float")) {
-							Float.parseFloat(listaInsert.get(i));
-							String tipoFloat[] = listaInsert.get(i).split(".");
+							
+							String tipoFloat[] = listaInsert.get(i).split("\\.");
+							System.out.println("FLOAT " + listaInsert.get(i));
 							insert.append(",");
-							for (int t = 0; t < (6 - tipoFloat[0].length()); t++) {
-								insert.append("0");
-							} // for
-							insert.append(removeEspaco(tipoFloat[0] + "."));
 							if (tipoFloat.length > 0) {
-								insert.append(removeEspaco(tipoFloat[1]));
+								for (int t = 0; t < (6 - tipoFloat[0].length()); t++) {
+									insert.append("0");
+								} // for
+								insert.append(removeEspaco(tipoFloat[0] + "." + tipoFloat[1]));
 								for (int t = 0; t < (6 - tipoFloat[1].length()); t++) {
 									insert.append("0");
 								} // for
+								System.out.println(insert.toString());
 
 							} // Se tiver numero depois da virgula.
 							else {
-								insert.append("000000");
+								for (int t = 0; t < (6 - listaInsert.get(i).length()); t++) {
+									insert.append("0");
+								}
+								insert.append(listaInsert.get(i) + ".000000");
 							} // se não tiver.
 
 						} // Se o tipo for Double

@@ -35,7 +35,6 @@
 <fullyQualifiedTypeName name="util.JoeBd.InsereArquivo"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="java.text.DateFormat"/>
@@ -49,4 +48,5 @@
 <fullyQualifiedTypeName name="gui.JoeBD.PainelTabela"/>
 <fullyQualifiedTypeName name="javax.swing.plaf.basic.BasicTabbedPaneUI.TabbedPaneLayout"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

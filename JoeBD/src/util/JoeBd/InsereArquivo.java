@@ -16,9 +16,22 @@ public class InsereArquivo {
 
 		PrintWriter printWriter = null;
 		File file = new File(arquivo);
+		ArrayList<String> linhasArquivo = new ArrayList<String>();
+		try {
+			linhasArquivo = parser.abrirArquivo(arquivo);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		try {
 			printWriter = new PrintWriter(new FileOutputStream(arquivo, true));
-			printWriter.write(novaLinha + linha);
+			if (linhasArquivo.size() > 0 && linhasArquivo.get(0).length() > 1) {
+				printWriter.write(novaLinha + linha);	
+				
+			}else {
+				printWriter.write(linha);
+			}
+			
 		} catch (IOException ioex) {
 			ioex.printStackTrace();
 		} finally {

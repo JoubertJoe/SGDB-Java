@@ -130,7 +130,7 @@ public class PainelTipos extends JFrame {
 		//
 		modelTipos = new DefaultTableModel(new Object[][] { { "", null, null, null, null, null, null, null, null }, },
 				new String[] { "NOME", "TIPO", "TAMANHO", "PK", "UNIQUE", "AI", "Null", "Default Value", "SIGNED" }) {
-			Class[] columnTypes = new Class[] { String.class, Object.class, Integer.class, Boolean.class, Boolean.class,
+			Class[] columnTypes = new Class[] { String.class, Object.class, Float.class, Boolean.class, Boolean.class,
 					Boolean.class, Boolean.class, Object.class, Boolean.class };
 
 			public Class getColumnClass(int columnIndex) {
@@ -206,26 +206,25 @@ public class PainelTipos extends JFrame {
 		FileWriter fw = new FileWriter("tipos/" + nomeArquivo + ".joett");
 		BufferedWriter bfw = new BufferedWriter(fw);
 		for (int i = 0; i < table.getColumnCount(); i++) {
-			//bfw.write(table.getColumnName(i));
-			//bfw.write("\t");
-		}//for i 
-		
-		
+			// bfw.write(table.getColumnName(i));
+			// bfw.write("\t");
+		} // for i
+
 		for (int i = 0; i < table.getRowCount(); i++) {
 			bfw.newLine();
 			for (int j = 0; j < table.getColumnCount(); j++) {
 				bfw.write(table.getValueAt(i, j) + "");
-				if((table.getValueAt(i, j)+"").length() == 0) {
+				if ((table.getValueAt(i, j) + "").length() == 0) {
 					bfw.write("null");
-				}//null
+				} // null
 				bfw.write("\t");
-			}//for j
-		}//for i
+			} // for j
+		} // for i
 		bfw.close();
 		fw.close();
 		fw = new FileWriter("tabelas/" + nomeArquivo + ".joetb");
 		fw.close();
-	}//salvarTable
+	}// salvarTable
 
 	public void verificaTamanhoElemento(JTable table) {
 
@@ -244,12 +243,11 @@ public class PainelTipos extends JFrame {
 				table.setValueAt(6, i, 2);
 			} else {
 				if (tamanho.length == 1) {
-					// int tamanhoFloat = Integer.parseInt(tamanho[1]);
+					int tamanhoFloat = Integer.parseInt(tamanho[1]);
 
-					// if ((tipo == "FLOAT" && tamanhoInteiro > 6) || (tipo == "FLOAT" &&
-					// tamanhoFloat > 6)) {
-					// table.setValueAt(6.6, i, 2);
-					// }
+					if ((tipo.equalsIgnoreCase("FLOAT") && tamanhoInteiro > 6) || (tipo.equalsIgnoreCase("FLOAT") && tamanhoFloat > 6)) {
+						table.setValueAt(6.6, i, 2);
+					}
 				}
 			}
 
