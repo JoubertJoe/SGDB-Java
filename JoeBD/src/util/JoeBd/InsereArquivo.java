@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class InsereArquivo {
@@ -28,7 +29,7 @@ public class InsereArquivo {
 		} // Finally
 	}// Metodo
 
-	public Boolean InsereInsert(String insert, String tabela, String variaveis) throws IOException {
+	public Boolean InsereInsert(String insert, String tabela, String variaveis) throws IOException, ParseException {
 		insert = insert.substring(1, insert.length() - 1);
 		if (!parser.validaInsert(insert, tabela.replace(".joetb", ".joett").replace("tabelas/", "tipos/"))) {
 			return false;

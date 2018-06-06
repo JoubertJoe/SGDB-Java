@@ -5,9 +5,14 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class ParserTabela {
+
+	DateFormat date = new SimpleDateFormat("yyyy-mm-dd");
 
 	public ArrayList<String> abrirArquivo(String nomeArquivo) throws IOException {
 
@@ -22,7 +27,7 @@ public class ParserTabela {
 	}
 
 	public void confereLinha(String arquivo, ArrayList<String> listaInsert, ArrayList<String> listaVar)
-			throws IOException {
+			throws IOException, ParseException {
 
 		ArrayList<String> linhas = abrirArquivo(arquivo);
 		ArrayList<String> linhaTabela = abrirArquivo(arquivo.replace("tipos/", "tabelas/").replace(".joett", ".joetb"));
@@ -34,24 +39,45 @@ public class ParserTabela {
 			String[] linha = linhas.get(j).split("\t");
 
 			if (autoIncrement(linha) == true) {
-				int aInc = Integer.parseInt(ultimoInsert[j]);
+				int aInc = Integer.parseInt(ultimoInsert[j]) + 1;
 				String aIncS = aInc + "";
 				for (int i = 0; i < (6 - aIncS.length()); i++) {
 					insert.append("0");
 				}
 				insert.append(aIncS);
-				System.out.println("INSERT " + insert.toString());
 
 			} // if AutoIncrement
-			for (int i = 0; i < listaVar.size() - 1; i++) { // i é a variavel a ser inserida
-				System.out.println(listaVar.get(i));
+			else {
+				for (int i = 0; i < listaVar.size() - 1; i++) { // i é a variavel a ser inserida
+					// System.out.println(listaVar.get(i));
 
-				if (nome(linha).equalsIgnoreCase(listaVar.get(i).toString())) {
-					System.out.println(nome(linha));
+					if (nome(linha).equalsIgnoreCase(listaVar.get(i).toString())) {
 
-				} // Se a variável bater com a linha;
+						if (tipo(linha).equalsIgnoreCase("date")) {
+							date.parse(listaInsert.get(i));
 
-			} // FOR J
+						} // Se o tipo for data.
+						else if (tipo(linha).equalsIgnoreCase("int")) {
+							Integer.parseInt(listaInsert.get(i));
+						} // Se o tipo for Inteiro
+						else if (tipo(linha).equalsIgnoreCase("double")) {
+							Double.parseDouble(listaInsert.get(i));
+						} // Se o tipo for Double
+						else if ((tipo(linha).equalsIgnoreCase("varchar")) || tipo(linha).equalsIgnoreCase("text")) {
+							int tamanho = listaInsert.get(i).length();
+							insert.append("[" + tamanho + "]");
+						} // VARCHAR & TEXT
+						
+
+						// Se tudo der certo :
+						insert.append("," + listaInsert.get(i));
+					} // Se a variável bater com a linha;
+
+				} // FOR J
+
+			}
+			System.out.println(insert.toString());
+
 		} // FOR I
 
 	}
@@ -69,13 +95,17 @@ public class ParserTabela {
 
 	}
 
+	public String removeEspaco(String stringComEspaco) {
+		return stringComEspaco.replace(" (?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", "");
+	}
+
 	// Métodos para controlar variáveis da tabela.
 	public String nome(String[] parametros) {
-		return parametros[0].replaceAll("\\s+", "");
+		return removeEspaco(parametros[0]);
 	}
 
 	public String tipo(String[] parametros) {
-		return parametros[1].replaceAll("\\s+", "");
+		return removeEspaco(parametros[1]);
 	}
 
 	public double tamanhoDouble(String[] parametros) {
@@ -92,7 +122,7 @@ public class ParserTabela {
 	}
 
 	public boolean primaryKey(String[] parametros) {
-		if (parametros[3].replaceAll("\\s+", "").equalsIgnoreCase("null")) {
+		if (removeEspaco(parametros[3]).equalsIgnoreCase("null")) {
 			return false;
 		} else {
 			return true;
@@ -102,7 +132,7 @@ public class ParserTabela {
 
 	public boolean unique(String[] parametros) {
 
-		if (parametros[4].replaceAll("\\s+", "").equalsIgnoreCase("null")) {
+		if (removeEspaco(parametros[4]).equalsIgnoreCase("null")) {
 			return false;
 		} else {
 			return true;
@@ -110,7 +140,7 @@ public class ParserTabela {
 	}
 
 	public boolean autoIncrement(String[] parametros) {
-		if (parametros[5].replaceAll("\\s+", "").equalsIgnoreCase("null")) {
+		if (removeEspaco(parametros[5]).equalsIgnoreCase("null")) {
 			return false;
 		} else {
 			return true;
@@ -118,7 +148,7 @@ public class ParserTabela {
 	}
 
 	public boolean canBeNull(String[] parametros) {
-		if (parametros[6].replaceAll("\\s+", "").equalsIgnoreCase("null")) {
+		if (removeEspaco(parametros[6]).equalsIgnoreCase("null")) {
 			return false;
 		} else {
 			return true;
@@ -127,7 +157,7 @@ public class ParserTabela {
 	}
 
 	public String defaultValue(String[] parametros) {
-		return parametros[7].replaceAll("\\s+", "");
+		return removeEspaco(parametros[7]);
 	}
 
 	public boolean signed(String[] parametros) {

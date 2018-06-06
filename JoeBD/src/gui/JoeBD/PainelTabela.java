@@ -155,7 +155,7 @@ public class PainelTabela extends JFrame {
 		txtCodigo.setCurrentLineHighlightColor(UIManager.getColor("TabbedPane.light"));
 		txtCodigo.setBackground(UIManager.getColor("TabbedPane.shadow"));
 		txtCodigo.setText(
-				"INSERT INTO `alunos`\n(Nome,cpf,telefone,nascimento,matricula)\nVALUES\n(\"Giulia Marla de Lima Costa\", \"707070\")\n");
+				"INSERT INTO `alunos`\n(Nome,cpf,telefone,nascimento,matricula)\nVALUES\n(\"Nome Sobrenome\", '12345678901','03333210000',01-01-01,1)\n");
 		txtCodigo.setMarginLineEnabled(true);
 		txtCodigo.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SQL);
 		txtCodigo.setAutoIndentEnabled(true);

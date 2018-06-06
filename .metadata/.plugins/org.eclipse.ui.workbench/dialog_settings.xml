@@ -10,10 +10,10 @@
 		<item value="org.eclipse.wb.core.guiEditor" key="EditorSelectionDialog.STORE_ID_DESCR"/>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="118" key="dialogHeight"/>
-		<item value="218" key="dialogWidth"/>
+		<item value="100" key="dialogHeight"/>
+		<item value="200" key="dialogWidth"/>
 		<list key="textEntries">
-			<item value="1"/>
+			<item value="2"/>
 			<item value="1"/>
 			<item value="1"/>
 			<item value="1"/>
@@ -41,6 +41,7 @@
 		</list>
 		<list key="textArray">
 			<item value="color"/>
+			<item value="theme"/>
 			<item value="console"/>
 			<item value="import"/>
 			<item value="install n"/>

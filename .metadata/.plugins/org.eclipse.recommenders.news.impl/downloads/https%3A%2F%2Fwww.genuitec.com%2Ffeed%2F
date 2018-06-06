@@ -12,12 +12,29 @@
 	<atom:link href="https://www.genuitec.com/feed/" rel="self" type="application/rss+xml" />
 	<link>https://www.genuitec.com</link>
 	<description>The Cloud Control Company</description>
-	<lastBuildDate>Fri, 01 Jun 2018 23:26:10 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 05 Jun 2018 17:12:06 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.2</generator>
 	<item>
+		<title>Angular Elements Made Simple with CodeMix</title>
+		<link>https://www.genuitec.com/angular-elements-made-simple-with-codemix/</link>
+		<pubDate>Thu, 31 May 2018 14:58:15 +0000</pubDate>
+		<dc:creator><![CDATA[dunebook7]]></dc:creator>
+				<category><![CDATA[Eclipse]]></category>
+		<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[MyEclipse]]></category>
+		<category><![CDATA[Programming Tips]]></category>
+		<category><![CDATA[Webclipse]]></category>
+		<category><![CDATA[angular elements]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=557676</guid>
+		<description><![CDATA[<p>Angular has been one of the best front-end JavaScript frameworks for some time now, and one of the many reasons is their continued effort to bring to developers new and improved ways to get the job done. One such effort is Angular Elements, which were introduced in Angular v6. In a nutshell, they convert components [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/angular-elements-made-simple-with-codemix/">Angular Elements Made Simple with CodeMix</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		</item>
+		<item>
 		<title>React Tutorial: Create and Debug an App in Eclipse with CodeMix</title>
 		<link>https://www.genuitec.com/react-tutorial-getting-started/</link>
 		<pubDate>Thu, 24 May 2018 15:14:43 +0000</pubDate>
@@ -282,25 +299,6 @@
 <p>The post <a rel="nofollow" href="https://www.genuitec.com/happy-holidays-family/">Happy Holidays &#8211; from Our Family to Yours!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
 ]]></description>
 		</item>
-		<item>
-		<title>MyEclipse 2017 Stable 2.0 is Ready for Your Holiday Table!</title>
-		<link>https://www.genuitec.com/myeclipse-2017-stable-2-0-is-ready/</link>
-		<pubDate>Fri, 22 Dec 2017 21:53:32 +0000</pubDate>
-		<dc:creator><![CDATA[Wanda Muriy]]></dc:creator>
-				<category><![CDATA[Eclipse]]></category>
-		<category><![CDATA[Genuitec]]></category>
-		<category><![CDATA[MyEclipse]]></category>
-		<category><![CDATA[Programming Tips]]></category>
-		<category><![CDATA[Webclipse]]></category>
-		<category><![CDATA[myeclipse 2017 stable 2.0]]></category>
-		<category><![CDATA[myeclipse release]]></category>
-		<category><![CDATA[myeclipse updates]]></category>
-
-		<guid isPermaLink="false">https://www.genuitec.com/?p=545684</guid>
-		<description><![CDATA[<p>The long wait between the first stable release of the year and this one has definitely paid off: 2017 Stable 2.0 sums up the work done in the last six CI releases! Thus, you can fully enjoy this holiday season, knowing that when you jump back into your work, you can rely on Angular 5 [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.genuitec.com/myeclipse-2017-stable-2-0-is-ready/">MyEclipse 2017 Stable 2.0 is Ready for Your Holiday Table!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
-]]></description>
-		</item>
 	</channel>
 </rss>
 
@@ -309,7 +307,7 @@ Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/pro
 
 Page Caching using disk: enhanced (SSL caching disabled) 
 Content Delivery Network via resources.cloud.genuitec.com
-Database Caching 107/158 queries in 0.044 seconds using disk
+Database Caching 150/157 queries in 1.000 seconds using disk
 
-Served from: www.genuitec.com @ 2018-06-02 16:01:01 by W3 Total Cache
+Served from: www.genuitec.com @ 2018-06-05 19:36:51 by W3 Total Cache
 -->
