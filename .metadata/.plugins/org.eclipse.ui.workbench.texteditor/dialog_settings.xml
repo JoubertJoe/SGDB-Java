@@ -2,22 +2,24 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="abrir" key="selection"/>
+		<item value="," key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="novaLinha"/>
-			<item value="System.g"/>
-			<item value="new line"/>
-			<item value="float"/>
-			<item value="System"/>
-			<item value="varchar"/>
-			<item value="System.ou"/>
-			<item value="append("/>
+			<item value="&#x09;"/>
+			<item value=","/>
+			<item value=" "/>
+			<item value="selects"/>
+			<item value="dados"/>
+			<item value="visualiza"/>
+			<item value="modeloBD"/>
+			<item value="Default"/>
 		</list>
 		<list key="replacehistory">
+			<item value=","/>
+			<item value="."/>
 			<item value="append(removeEspaco("/>
 			<item value="tipoFloat"/>
 			<item value="linha"/>

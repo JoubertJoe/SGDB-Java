@@ -1,0 +1,7 @@
+id	INT	6.0	true	null	true	null	null	null	
+registroProduto	CHAR	11.0	null	true	null	null	null	null	
+preco	FLOAT	6.6	null	null	null	null	null	null	
+nomeVendedor	VARCHAR	30.0	null	null	null	null	null	null	
+dataChegada	DATE	null	null	null	null	null	null	null	
+dataCompra	DATETIME	null	null	null	null	null	null	null	
+estoque	INT	null	null	null	null	null	null	null	
