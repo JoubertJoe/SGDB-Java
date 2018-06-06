@@ -155,7 +155,7 @@ public class PainelTabela extends JFrame {
 		txtCodigo.setCurrentLineHighlightColor(UIManager.getColor("TabbedPane.light"));
 		txtCodigo.setBackground(UIManager.getColor("TabbedPane.shadow"));
 		txtCodigo.setText(
-				"INSERT INTO `alunos`\n(Nome,cpf,telefone,nascimento,matricula)\nVALUES\n(\"Nome Sobrenome\", '12345678901','03333210000',01-01-01,1)\n");
+				"INSERT INTO `alunos`\n(Nome,cpf,telefone,nascimento,matricula)\nVALUES\n(\"Nome Sobrenome\", '12345678901','03333210000',01-01-01,0000001)\n");
 		txtCodigo.setMarginLineEnabled(true);
 		txtCodigo.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SQL);
 		txtCodigo.setAutoIndentEnabled(true);
@@ -196,23 +196,25 @@ public class PainelTabela extends JFrame {
 
 		// Passando tudo pra caixa baixa, removendo todos os espaços em branco, e
 		// filtrando o Select
-		novoTexto = texto.toLowerCase(getLocale()).replaceAll("\\s+", "").split("insertinto");
-
-		novoTexto = novoTexto[1].split("values"); // Isolando o Select
-		String dados = novoTexto[1].toLowerCase().toString().replaceAll("\n", null);
-
+		novoTexto = texto.replaceAll("\n", "").split("(?i)insert into");
+		System.out.println(novoTexto[0]);
+		novoTexto = novoTexto[1].split("(?i)values"); // Isolando o Select
+		System.out.println(novoTexto[1]);
+		String dados = novoTexto[1].toString().replaceAll("\n", null);
 		novoTexto = novoTexto[0].replaceAll("`", "").split("\\(");
+
 		novoTexto[1] = novoTexto[1].replaceAll(",", "\t").replaceAll("\\)", "");
 
-		String[] aux = new String[] { novoTexto[0], novoTexto[1], dados };
+		String[] aux = new String[] { novoTexto[0].replaceAll("\\s+", ""), novoTexto[1], dados };
 		return aux;
+
 	}
 
 	private String[] filtraSelect(String texto) throws Exception {
 		String[] novoTexto;
 		// Passando tudo pra caixa baixa, removendo todos os espaços em branco, e
 		// filtrando o Select
-		novoTexto = texto.toLowerCase(getLocale()).replaceAll("\\s+", "").split("select");
+		novoTexto = texto.replaceAll("\\s+", "").split("(?i)select");
 		novoTexto = novoTexto[1].split("from"); // Isolando o Select
 		novoTexto = novoTexto[0].split(",");
 		return novoTexto;
@@ -222,9 +224,9 @@ public class PainelTabela extends JFrame {
 		String[] novoTexto;
 		// Passando tudo pra caixa baixa, removendo todos os espaços em branco, e
 		// filtrando o Select
-		novoTexto = texto.toLowerCase(getLocale()).replaceAll("\\s+", "").split("select");
-		novoTexto = novoTexto[1].split("from");
-		novoTexto = novoTexto[1].split("where"); // Isolando o From
+		novoTexto = texto.toLowerCase(getLocale()).replaceAll("\\s+", "").split("(?i)select");
+		novoTexto = novoTexto[1].split("(?i)from");
+		novoTexto = novoTexto[1].split("(?i)where"); // Isolando o From
 		novoTexto = novoTexto[0].split(",");
 
 		return novoTexto;
@@ -234,9 +236,9 @@ public class PainelTabela extends JFrame {
 		String[] novoTexto;
 		// Passando tudo pra caixa baixa, removendo todos os espaços em branco, e
 		// filtrando o Select
-		novoTexto = texto.toLowerCase(getLocale()).replaceAll("\\s+", "").split("select");
-		novoTexto = novoTexto[1].split("from");
-		novoTexto = novoTexto[1].split("where"); // Isolando o Where
+		novoTexto = texto.replaceAll("\\s+", "").split("(?i)select");
+		novoTexto = novoTexto[1].split("(?i)from");
+		novoTexto = novoTexto[1].split("(?i)where"); // Isolando o Where
 		novoTexto = novoTexto[1].split(",");
 		return novoTexto;
 
@@ -294,7 +296,7 @@ public class PainelTabela extends JFrame {
 				listaElementos = importaArquivo(tabela);
 
 				for (int i = 0; i < listaElementos.size(); i++) {
-					System.out.println("linha 01 " + listaElementos.get(i)[0]);
+					// System.out.println("linha 01 " + listaElementos.get(i)[0]);
 					String[] arrayLinha = listaElementos.get(i)[0].split(",");
 					modeloBD.addRow(arrayLinha);
 
@@ -354,12 +356,14 @@ public class PainelTabela extends JFrame {
 		btnRodar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String comandos = txtCodigo.getText().toLowerCase();
-				if (comandos.contains("insert")) {
+				String comandos = txtCodigo.getText();
+				if (comandos.toLowerCase().contains("insert")) {
+
 					try {
 						String insert[] = filtraInsert(comandos);
+
 						for (int i = 0; i < insert.length; i++) {
-							System.out.println(i + ":" + insert[i]);
+							// System.out.println(i + ":" + insert[i]);
 						}
 						insere.InsereInsert(insert[2], "tipos/" + insert[0] + ".joett", insert[1]);
 
@@ -369,7 +373,7 @@ public class PainelTabela extends JFrame {
 
 				} // if
 
-				if (comandos.contains("select")) {
+				if (comandos.toLowerCase().contains("select")) {
 					try {
 						selects = filtraSelect(comandos);
 						froms = filtraFrom(comandos);
@@ -381,5 +385,7 @@ public class PainelTabela extends JFrame {
 				} // if
 			}// metodo
 		});// listener
+		
+		btnVoltar.setEnabled(false);
 	}
 }

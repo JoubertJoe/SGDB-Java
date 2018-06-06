@@ -1,0 +1,4 @@
+id	INT	5	true	true	true	null	null	null	null
+produto	CHAR	10	null	null	null	null	null	null	
+categoria	VARCHAR	null	null	null	null	null	produto	null	
+preco	FLOAT	3	null	null	null	null	null	null	

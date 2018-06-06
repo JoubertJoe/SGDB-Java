@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class ParserTabela {
 
 	DateFormat date = new SimpleDateFormat("yyyy-mm-dd");
+	DateFormat dateTime = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 
 	public ArrayList<String> abrirArquivo(String nomeArquivo) throws IOException {
 
@@ -26,59 +27,105 @@ public class ParserTabela {
 
 	}
 
-	public void confereLinha(String arquivo, ArrayList<String> listaInsert, ArrayList<String> listaVar)
+	public String confereLinha(String arquivo, ArrayList<String> listaInsert, ArrayList<String> listaVar)
 			throws IOException, ParseException {
 
 		ArrayList<String> linhas = abrirArquivo(arquivo);
 		ArrayList<String> linhaTabela = abrirArquivo(arquivo.replace("tipos/", "tabelas/").replace(".joett", ".joetb"));
-		String ultimoInsert[] = linhaTabela.get(linhaTabela.size() - 1).split(",");
+		String ultimoInsert[] = {"0"};
+		if(linhaTabela.size() > 0) {
+			ultimoInsert = linhaTabela.get(linhaTabela.size() - 1).split(",");			
+		}
+		
 		StringBuilder insert = new StringBuilder();
 
-		for (int j = 0; j <= linhas.size(); j++) { // j é a linha
+		for (int j = 0; j <= linhas.size() - 1; j++) { // j é a linha
 			// System.out.println(linhas.get(j));
 			String[] linha = linhas.get(j).split("\t");
-
 			if (autoIncrement(linha) == true) {
 				int aInc = Integer.parseInt(ultimoInsert[j]) + 1;
 				String aIncS = aInc + "";
-				for (int i = 0; i < (6 - aIncS.length()); i++) {
+				for (int t = 0; t < (6 - aIncS.length()); t++) {
 					insert.append("0");
 				}
-				insert.append(aIncS);
+				insert.append(removeEspaco(aIncS));
 
 			} // if AutoIncrement
 			else {
-				for (int i = 0; i < listaVar.size() - 1; i++) { // i é a variavel a ser inserida
-					// System.out.println(listaVar.get(i));
 
+				for (int i = 0; i < listaVar.size(); i++) { // i é a variavel a ser inserida
 					if (nome(linha).equalsIgnoreCase(listaVar.get(i).toString())) {
 
 						if (tipo(linha).equalsIgnoreCase("date")) {
 							date.parse(listaInsert.get(i));
-
+							insert.append(removeEspaco("," + listaInsert.get(i)));
 						} // Se o tipo for data.
 						else if (tipo(linha).equalsIgnoreCase("int")) {
-							Integer.parseInt(listaInsert.get(i));
+
+							if (autoIncrement(linha) == true) {
+								int aInc = Integer.parseInt(ultimoInsert[j]) + 1;
+								String aIncS = aInc + "";
+								for (int t = 0; t < (6 - aIncS.length()); t++) {
+									insert.append("0");
+								}
+								insert.append(removeEspaco(aIncS));
+
+							} // if AutoIncrement
+							else {
+
+								Integer.parseInt(listaInsert.get(i));
+								insert.append(",");
+								for (int t = 0; t < (6 - listaInsert.get(i).length()); t++) {
+									insert.append("0");
+								} // For numero de 0s no INT
+
+								insert.append(removeEspaco(listaInsert.get(i)));
+							}
 						} // Se o tipo for Inteiro
-						else if (tipo(linha).equalsIgnoreCase("double")) {
-							Double.parseDouble(listaInsert.get(i));
+
+						else if (tipo(linha).equalsIgnoreCase("float")) {
+							Float.parseFloat(listaInsert.get(i));
+							String tipoFloat[] = listaInsert.get(i).split(".");
+							insert.append(",");
+							for (int t = 0; t < (6 - tipoFloat[0].length()); t++) {
+								insert.append("0");
+							} // for
+							insert.append(removeEspaco(tipoFloat[0] + "."));
+							if (tipoFloat.length > 0) {
+								insert.append(removeEspaco(tipoFloat[1]));
+								for (int t = 0; t < (6 - tipoFloat[1].length()); t++) {
+									insert.append("0");
+								} // for
+
+							} // Se tiver numero depois da virgula.
+							else {
+								insert.append("000000");
+							} // se não tiver.
+
 						} // Se o tipo for Double
 						else if ((tipo(linha).equalsIgnoreCase("varchar")) || tipo(linha).equalsIgnoreCase("text")) {
-							int tamanho = listaInsert.get(i).length();
-							insert.append("[" + tamanho + "]");
+							// int tamanho = listaInsert.get(i).length();
+							// insert.append(removeEspaco("[" + tamanho + "]");
+							insert.append("," + removeEspaco(listaInsert.get(i)));
 						} // VARCHAR & TEXT
-						
+						else if (tipo(linha).equalsIgnoreCase("char")) {
+							insert.append(removeEspaco("," + listaInsert.get(i).replaceAll("[']", "")));
+						} // CHAR
+						else if (tipo(linha).equalsIgnoreCase("datetime")) {
 
-						// Se tudo der certo :
-						insert.append("," + listaInsert.get(i));
+							dateTime.parse(listaInsert.get(i));
+							insert.append(removeEspaco("," + listaInsert.get(i)));
+						} // Se o tipo for date time.
+
 					} // Se a variável bater com a linha;
 
 				} // FOR J
 
 			}
-			System.out.println(insert.toString());
 
 		} // FOR I
+
+		return (insert.toString());
 
 	}
 
@@ -96,7 +143,7 @@ public class ParserTabela {
 	}
 
 	public String removeEspaco(String stringComEspaco) {
-		return stringComEspaco.replace(" (?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", "");
+		return stringComEspaco.replaceAll(" (?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", "");
 	}
 
 	// Métodos para controlar variáveis da tabela.
